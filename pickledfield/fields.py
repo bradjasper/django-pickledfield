@@ -43,3 +43,9 @@ class PickledObjectField(models.Field):
             return super(PickledObjectField, self).get_db_prep_lookup(lookup_type, value)
         else:
             raise TypeError('Lookup type %s is not supported.' % lookup_type)
+
+try:
+    from south.modelsinspector import add_introspection_rules
+    add_introspection_rules([], ["^pickledfield\.fields\.PickledObjectField"])
+except:
+    pass
